@@ -36,6 +36,24 @@ class test_db_storage(unittest.TestCase):
         with patch.object(self.storage, '_DBStorage__session') as mock_session:
             mock_session.return_value.query.return_value.all.return_value = []
             self.assertEqual(self.storage.all(User), {})
+    
+    def test_new(self):
+        """Test the new method"""
+        with patch.object(self.storage, '_DBStorage__session') as mock_session:
+            mock_session.return_value.query.return_value.new.return_value = None
+            self.assertEqual(self.storage.new(User), None)
+
+    def test_save(self):
+        """Test the save method"""
+        with patch.object(self.storage, '_DBStorage__session') as mock_session:
+            mock_session.return_value.query.return_value.new.return_value = None
+            self.storage.save()
+            self.assertEqual(self.storage.all(), {})
+
+    def test_reload(self):
+        """Test the reload method"""
+        with patch.object(self.storage, '_DBStorage__session') as mock_session:
+            mock_session.return_value.query.return_value.all.return_value = []
 
 
 if __name__ == '__main__':
