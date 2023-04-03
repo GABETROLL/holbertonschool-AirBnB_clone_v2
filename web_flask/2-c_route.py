@@ -10,10 +10,12 @@ def hello():
     """ Function that returns a string """
     return 'Hello HBNB!'
 
+
 @app.route('/hbnb', strict_slashes=False)
 def hbnb():
     """ Function that returns a string """
     return 'HBNB'
+
 
 @app.route('/c/<text>', strict_slashes=False)
 def c(text):
