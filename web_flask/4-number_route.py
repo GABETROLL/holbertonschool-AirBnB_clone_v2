@@ -63,11 +63,12 @@ def checks_if_n_is_a_number(n: str):
     "" HTML code otherwise.
     """
     try:
-        return f"{n} is a number"
+        int(n)
     except ValueError:
-        # value error is raised when n isn't
+        # 'n' raises value error when n isn't
         # a valid int string
         return ""
+    return f"{n} is a number"
 
 
 if __name__ == "__main__":
