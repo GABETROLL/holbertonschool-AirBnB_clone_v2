@@ -67,7 +67,7 @@ def checks_if_n_is_a_number(n: str):
     except ValueError:
         # 'n' raises value error when n isn't
         # a valid int string
-        return ""
+        pass
     return f"{n} is a number"
 
 
