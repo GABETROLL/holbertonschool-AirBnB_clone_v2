@@ -65,9 +65,9 @@ def checks_if_n_is_a_number(n: str):
     try:
         return f"{n} is a number"
     except ValueError:
+        # value error is raised when n isn't
+        # a valid int string
         return ""
-    except Exception as e:
-        print(e.with_traceback())
 
 
 if __name__ == "__main__":
