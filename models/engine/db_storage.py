@@ -60,10 +60,6 @@ class DBStorage():
         """Saves storage dictionary change to file"""
         self.__session.commit()
 
-    def close(self):
-        """Close the session"""
-        self.__session.close()
-
     def delete(self, obj=None):
         """Delete obj from __objects if it's inside,
         if obj is equal to None, do nothing"""
@@ -75,3 +71,7 @@ class DBStorage():
         Base.metadata.create_all(self.__engine)
         Session = sessionmaker(bind=self.__engine, expire_on_commit=False)
         self.__session = scoped_session(Session)
+
+    def close(self):
+        """Close the session"""
+        self.__session.remove()
