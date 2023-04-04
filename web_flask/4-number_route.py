@@ -70,7 +70,8 @@ def checks_if_n_is_a_number(n: str):
 
         # Return None, to invalid non-number link!!!
         pass
-    return f"{n} is a number"
+    else:
+        return f"{n} is a number"
 
 
 if __name__ == "__main__":
