@@ -43,6 +43,7 @@ def things_about_c(text: str):
     return f"C {text.replace('_', ' ')}"
 
 
+@app.route("/python", strict_slashes=False)
 @app.route("/python/<text>", strict_slashes=False)
 def things_about_python(text: str = "is_cool"):
     """
