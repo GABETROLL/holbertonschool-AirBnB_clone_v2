@@ -55,10 +55,12 @@ def things_about_python(text: str = "is_cool"):
     return f"Python {text.replace('_', ' ')}"
 
 
+# only validates the link if it's a valid int,
+# otherwise, 404
 @app.route("/number/<int:n>", strict_slashes=False)
 def checks_if_n_is_a_number(n: str):
     """
-    Returns "{n} is a number" HTML code, 
+    Returns "{n} is a number" HTML code,
     ONLY if n is a valid Python3 int;
     "" HTML code otherwise.
     """
