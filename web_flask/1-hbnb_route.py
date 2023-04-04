@@ -32,16 +32,5 @@ def just_hbnb():
     return "HBNB"
 
 
-@app.route("/c/<text>", strict_slashes=False)
-def things_about_c(text: str):
-    """
-    Returns "C {text}" HTML code ,
-    replacing all underscores
-    in the {text} variable with spaces
-    (no HTML tags)
-    """
-    return f"C {text}"
-
-
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000)

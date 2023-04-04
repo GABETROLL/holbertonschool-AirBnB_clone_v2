@@ -40,7 +40,7 @@ def things_about_c(text: str):
     in the {text} variable with spaces
     (no HTML tags)
     """
-    return f"C {text}"
+    return f"C {text.replace('_', ' ')}"
 
 
 if __name__ == "__main__":
