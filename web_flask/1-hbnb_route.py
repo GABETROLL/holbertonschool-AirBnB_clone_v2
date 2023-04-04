@@ -24,7 +24,7 @@ def hello_hbnb():
 
 
 @app.route("/hbnb", strict_slashes=False)
-def hello_hbnb():
+def just_hbnb():
     """
     Just "HBNB",
     without any tags sorrounding it.
