@@ -18,7 +18,7 @@ def hello_hbnb():
     HTML paragraph with "Hello, HBNB!"
     in it.
     """
-    return "<p>Hello HBNB!</p>"
+    return "Hello HBNB!"
 
 
 if __name__ == "__main__":
