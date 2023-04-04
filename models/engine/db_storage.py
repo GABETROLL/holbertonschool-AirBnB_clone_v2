@@ -21,8 +21,7 @@ class DBStorage():
         """
         Constructor
         Connect to the database through self.__engine.
-        Drop all tables if the environment
-        variable HBNB_ENV is equal to test.
+        Drop all tables if the environment variable HBNB_ENV is equal to test.
         """
         self.__engine = create_engine(
             f"mysql+mysqldb://{environ['HBNB_MYSQL_USER']}:{environ['HBNB_MYSQL_PWD']}@{environ['HBNB_MYSQL_HOST']}/{environ['HBNB_MYSQL_DB']}",
@@ -63,7 +62,7 @@ class DBStorage():
 
     def close(self):
         """Close the session"""
-        self.__session.close()
+        self.__session.remove()
 
     def delete(self, obj=None):
         """Delete obj from __objects if it's inside,
