@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """
-Flask website with plain text
-(without paragraph tags)
-that says "Hello, HBNB!" in the main page,
-and "HBNB" in the path: /hbnb.
+Contains:
+/: "Hello, HBNB!" without any tags sorrounding it
+/hbnb: "HBNB" without any tags sorrounding it
+
 
 When this script is the main script,
 the website is ran and hosted in

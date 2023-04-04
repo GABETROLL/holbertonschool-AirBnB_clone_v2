@@ -1,15 +1,17 @@
 #!/usr/bin/python3
 """
-Flask website with plain text
-(without paragraph tags)
-that says "Hello, HBNB!" in the main page,
-and "HBNB" in the path: /hbnb.
+Contains:
+/: "Hello, HBNB!" without any tags sorrounding it
+/hbnb: "HBNB" without any tags sorrounding it
+/c/<text>: f"C {text}" without any tags sorrounding it
+/number/<int:n>: Only valid when 'n' is an int,
+and it contains f"{n} is a number"
 
 When this script is the main script,
 the website is ran and hosted in
 "0.0.0.0" in port 5000.
 """
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -65,6 +67,17 @@ def checks_if_n_is_a_number(n: str):
     Returns "{n} is a number" HTML code.
     """
     return f"{n} is a number"
+
+
+@app.route("/number_template/<int:n>", strict_slashes=False)
+def first_html_file_also_integer(n: str):
+    """
+    <ONLY GETS USED BY "app.route" IF N IS A
+    VALID INTEGER>
+    Returns "templates/5-number.html" if
+    n is a valid integer.
+    """
+    return render_template("templates/5-number.html", test=n)
 
 
 if __name__ == "__main__":
