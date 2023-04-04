@@ -29,7 +29,7 @@ def just_hbnb():
     Just "HBNB",
     without any tags sorrounding it.
     """
-    return "Hello HBNB!"
+    return "HBNB"
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000)
