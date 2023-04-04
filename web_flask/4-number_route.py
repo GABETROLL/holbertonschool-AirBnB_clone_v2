@@ -64,8 +64,10 @@ def checks_if_n_is_a_number(n: str):
     """
     try:
         return f"{n} is a number"
-    except SyntaxError:
+    except ValueError:
         return ""
+    except Exception as e:
+        print(e.with_traceback())
 
 
 if __name__ == "__main__":
