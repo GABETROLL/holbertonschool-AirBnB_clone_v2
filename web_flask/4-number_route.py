@@ -55,23 +55,14 @@ def things_about_python(text: str = "is_cool"):
     return f"Python {text.replace('_', ' ')}"
 
 
-@app.route("/number/<n>", strict_slashes=False)
+@app.route("/number/<int:n>", strict_slashes=False)
 def checks_if_n_is_a_number(n: str):
     """
     Returns "{n} is a number" HTML code, 
     ONLY if n is a valid Python3 int;
     "" HTML code otherwise.
     """
-    try:
-        int(n)
-    except ValueError:
-        # 'n' raises value error when n isn't
-        # a valid int string
-
-        # Return None, to invalid non-number link!!!
-        pass
-    else:
-        return f"{n} is a number"
+    return f"{n} is a number"
 
 
 if __name__ == "__main__":
