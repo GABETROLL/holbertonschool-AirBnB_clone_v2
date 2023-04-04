@@ -17,7 +17,7 @@ app = Flask(__name__)
 @app.route("/", strict_slashes=False)
 def hello_hbnb():
     """
-    Just "Hello, HBNB!",
+    Returns just "Hello, HBNB!" HTML code,
     without any tags sorrounding it.
     """
     return "Hello HBNB!"
@@ -26,10 +26,22 @@ def hello_hbnb():
 @app.route("/hbnb", strict_slashes=False)
 def just_hbnb():
     """
-    Just "HBNB",
+    Returns just "HBNB" HTML code,
     without any tags sorrounding it.
     """
     return "HBNB"
+
+
+@app.route("/c/<text>", strict_slashes=False)
+def things_about_c(text: str):
+    """
+    Returns "C {text}" HTML code ,
+    replacing all underscores
+    in the {text} variable with spaces
+    (no HTML tags)
+    """
+    return f"C {text}"
+
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000)
