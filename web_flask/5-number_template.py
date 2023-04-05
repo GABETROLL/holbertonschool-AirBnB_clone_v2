@@ -74,10 +74,10 @@ def first_html_file_also_integer(n: str):
     """
     <ONLY GETS USED BY "app.route" IF N IS A
     VALID INTEGER>
-    Returns "templates/5-number.html" if
+    Returns the text in "templates/5-number.html" if
     n is a valid integer.
     """
-    return render_template("templates/5-number.html", test=n)
+    return render_template("5-number.html", n=n)
 
 
 if __name__ == "__main__":
