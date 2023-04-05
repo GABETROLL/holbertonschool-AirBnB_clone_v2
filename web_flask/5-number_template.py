@@ -82,8 +82,9 @@ def first_html_file_also_integer(n: str):
     """
     <ONLY GETS USED BY "app.route" IF N IS A
     VALID INTEGER>
-    Returns the text in "templates/5-number.html" if
-    n is a valid integer.
+    Returns the text in "templates/5-number.html"
+    with 'n' in place of the '{{n}}', using
+    flask.render_template
     """
     return render_template("5-number.html", n=n)
 
