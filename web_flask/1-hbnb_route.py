@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 """
-Flask website
+URLs and their CONTENTS:
+
+[ / ]: "Hello, HBNB!" without any tags sorrounding it
+[ /hbnb ]: "HBNB" without any tags sorrounding it
 
 When this script is the main script,
 the website is ran and hosted in

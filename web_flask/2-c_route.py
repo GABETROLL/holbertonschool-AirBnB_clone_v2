@@ -1,9 +1,10 @@
 #!/usr/bin/python3
 """
-Contains:
-/: "Hello, HBNB!" without any tags sorrounding it
-/hbnb: "HBNB" without any tags sorrounding it
+URLs and their CONTENTS:
 
+[ / ]: "Hello, HBNB!" without any tags sorrounding it
+[ /hbnb ]: "HBNB" without any tags sorrounding it
+[ /c/<text> ]: f"C {text}" without any tags sorrounding it
 
 When this script is the main script,
 the website is ran and hosted in

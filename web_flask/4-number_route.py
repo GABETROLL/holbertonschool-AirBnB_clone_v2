@@ -1,9 +1,16 @@
 #!/usr/bin/python3
 """
-Flask website with plain text
-(without paragraph tags)
-that says "Hello, HBNB!" in the main page,
-and "HBNB" in the path: /hbnb.
+URLs and their CONTENTS:
+
+[ / ]: "Hello, HBNB!" without any tags sorrounding it
+[ /hbnb ]: "HBNB" without any tags sorrounding it
+[ /c/<text> ]: f"C {text}" without any tags sorrounding it
+[ /python/<text> ]: f"Python {text} without any tags sorrounding it.
+    It also gets rid of all the underscores in 'text' and replaces them with spaces.
+    If there's no "<text>" nor "/<text>", the default 'text' is:
+    "is_cool"
+[ /number/<int:n> ]: Only valid when 'n' is an int,
+    and it contains f"{n} is a number"
 
 When this script is the main script,
 the website is ran and hosted in
