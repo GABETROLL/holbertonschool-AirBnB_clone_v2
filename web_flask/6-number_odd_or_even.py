@@ -99,10 +99,9 @@ def int_is_odd_or_even(n: str):
     with 'odd' or 'even' in place of the '{{odd_or_even}}', using
     flask.render_template.
     """
-    return render_template("6-number_odd_or_even.html", odd_or_even=(
-            "odd" if int(n) % 2 == 1 else "even"
-        )
-    )
+    return render_template("6-number_odd_or_even.html", n=n, odd_or_even=(
+            "odd" if int(n) % 2 == 1 else "even"))
+
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000)
