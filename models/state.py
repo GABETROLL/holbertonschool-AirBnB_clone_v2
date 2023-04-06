@@ -11,6 +11,9 @@ class State(BaseModel, Base):
     __tablename__ = 'states'
     name = Column(String(128), nullable=False)
     cities = relationship("City", backref="state", cascade="all, delete")
+    # If FileStorage is being used instead of DBStorage,
+    # the cities should be from the FileStorage class,
+    # like this:
     if ('HBNB_TYPE_STORAGE' not in environ or
             environ["HBNB_TYPE_STORAGE"] != 'db'):
         @property
@@ -18,8 +21,8 @@ class State(BaseModel, Base):
             """ Returns the list of City instances with state_id """
             from models.city import City
             from models import storage
-            cities = []
-            for city in storage.all(City).values():
-                if city.state_id == self.id:
-                    cities.append(city)
-            return cities
+            return [
+                city
+                for id, city in storage.all(City).items()
+                if id == self.id
+            ]

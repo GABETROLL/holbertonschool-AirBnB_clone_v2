@@ -73,5 +73,9 @@ class DBStorage():
         self.__session = scoped_session(Session)
 
     def close(self):
-        """Close current database session"""
+        """
+        Close current database session
+        and create a new one
+        """
         self.__session.remove()
+        self.reload()
