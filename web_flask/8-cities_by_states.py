@@ -3,6 +3,8 @@
 """
 from flask import Flask, render_template
 from models import storage
+from models.state import State
+
 
 app = Flask(__name__)
 
@@ -20,8 +22,5 @@ def reload_states_list(exception):
 def cities_by_states():
     return render_template(
         "8-cities_by_state.html",
-        states=sorted(
-            storage.all().values(),
-            key=lambda state: state.name
-        )
+        states=storage.all(State).values()
     )
