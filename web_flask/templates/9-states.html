@@ -4,7 +4,17 @@
         <TITLE>HBNB</TITLE>
     </HEAD>
     <BODY>
-        {% if id == state.id %}
+        {#
+            this page's link should have a valid
+            state id.
+            If the id is valid, 'state' will be
+            a models.state.State object.
+            Otherwise, it should be None,
+            and "Not found!" is displayed instead.
+            For more information, look at
+            "../9-states.py".           
+        #}
+        {% if state %}
             <H1>State: {{ state.name }}</H1>
             <H3>Cities:</H3>
             <UL>

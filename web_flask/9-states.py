@@ -24,7 +24,6 @@ from flask import Flask, render_template
 from models import storage
 from models.state import State
 
-
 app = Flask(__name__)
 
 
@@ -63,9 +62,9 @@ def state_cities_page(id):
     """
     return render_template(
         "9-states.html",
-        id=id,
-        state=storage.all()[id]
+        state=storage.all().get(f"State.{id}")
     )
+
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000)
