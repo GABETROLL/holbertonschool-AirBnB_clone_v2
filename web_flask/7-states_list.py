@@ -40,7 +40,7 @@ def states_list():
     return render_template(
         "7-states_list.html",
         states_list=sum(
-            (f"<LI>{obj}</LI>"
+            (f"<LI>{obj.id}: <B>{obj.name}</B></LI>"
              for obj in storage.all().values()
             ),
             start=""
