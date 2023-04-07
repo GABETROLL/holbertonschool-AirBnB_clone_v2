@@ -22,12 +22,11 @@ the website is ran and hosted in
 from flask import Flask, render_template
 from models import storage
 
-storage.all()
 app = Flask(__name__)
 
 
 @app.teardown_appcontext
-def states_list():
+def reload_states_list(exception):
     """
     Calls storage.close()
     (to re-load the data)
@@ -36,7 +35,7 @@ def states_list():
 
 
 @app.route("/states_list", strict_slashes=False)
-def states_list():
+def states_list_page():
     """
     Returns HTML page
     "templates/7-states_list.html"
@@ -45,7 +44,7 @@ def states_list():
     """
     return render_template(
         "7-states_list.html",
-        states_list=storage.all().values()
+        states=storage.all().values()
     )
 
 
