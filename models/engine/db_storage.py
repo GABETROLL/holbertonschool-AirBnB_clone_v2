@@ -40,16 +40,16 @@ class DBStorage():
         result = {}
         if cls is None:
             for cls_type in obj_types:
-                objects = self.__session.query(obj_types[cls_type]).all()
-                for obj in objects:
+                result_objects = self.__session.query(obj_types[cls_type]).all()
+                for obj in result_objects:
                     key = f"{cls_type}.{obj.id}"
                     result[key] = obj
-        else:
-            if isinstance(cls, str):
-                objects = self.__session.query(cls).all()
-                for obj in objects:
-                    key = f"{cls.__name__}.{obj.id}"
-                    result[key] = obj
+        elif isinstance(cls, type):
+            result_objects = self.__session.query(cls).all()
+            result = {
+                f"{cls.__name__}.{obj.id}": obj
+                for obj in result_objects
+            }
         return result
 
     def new(self, obj):
@@ -78,4 +78,3 @@ class DBStorage():
         and create a new one
         """
         self.__session.remove()
-        self.reload()
