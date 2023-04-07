@@ -24,7 +24,9 @@ class DBStorage():
         Drop all tables if the environment variable HBNB_ENV is equal to test.
         """
         self.__engine = create_engine(
-            f"mysql+mysqldb://{environ['HBNB_MYSQL_USER']}:{environ['HBNB_MYSQL_PWD']}@{environ['HBNB_MYSQL_HOST']}/{environ['HBNB_MYSQL_DB']}",
+            f"mysql+mysqldb://{environ['HBNB_MYSQL_USER']}\
+:{environ['HBNB_MYSQL_PWD']}@{environ['HBNB_MYSQL_HOST']}\
+/{environ['HBNB_MYSQL_DB']}",
             pool_pre_ping=True,
         )
         if 'HBNB_ENV' in environ and environ['HBNB_ENV'] == 'test':
@@ -34,22 +36,38 @@ class DBStorage():
                 self.__engine.execute(table.delete())
 
     def all(self, cls=None):
-        """Returns the list of objects of one type of class. Return a
-        dictionary like FileStorage"""
-        obj_types = {'User': User, 'State': State, 'City': City, 'Amenity': Amenity, 'Place': Place, 'Review': Review}
+        """
+        Returns a dict of objects of one type of class 'cls',
+        where the keys are "{the objs'}.{the objs' type}"
+        and the values are the objs themselves,
+        like FileStorage, BUT located in the SQl server
+        in 'self'.
+
+        If the 'cls' is None or isn't provided,
+        ALL of the objs of ANY type will be returned
+        in the result dict.
+
+        If 'cls' is neither, this method raises
+        ValueError.
+        """
+        obj_types = {'User': User, 'State': State, 'City': City,
+                     'Amenity': Amenity, 'Place': Place, 'Review': Review}
         result = {}
         if cls is None:
             for cls_type in obj_types:
-                result_objects = self.__session.query(obj_types[cls_type]).all()
-                for obj in result_objects:
+                result_objs = self.__session.query(obj_types[cls_type]).all()
+                for obj in result_objs:
                     key = f"{cls_type}.{obj.id}"
                     result[key] = obj
         elif isinstance(cls, type):
-            result_objects = self.__session.query(cls).all()
+            result_objs = self.__session.query(cls).all()
             result = {
                 f"{cls.__name__}.{obj.id}": obj
-                for obj in result_objects
+                for obj in result_objs
             }
+        else:
+            raise ValueError(f"argument 'cls' of 'DBStorage.all'\
+should be a class, or None. Got: {cls}")
         return result
 
     def new(self, obj):
