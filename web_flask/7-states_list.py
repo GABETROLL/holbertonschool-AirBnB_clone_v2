@@ -26,9 +26,27 @@ storage.all()
 app = Flask(__name__)
 
 
+@app.teardown_appcontext
+def states_list():
+    """
+    Calls storage.close()
+    (to re-load the data)
+    """
+    storage.close()
+
+
 @app.route("/states_list", strict_slashes=False)
 def states_list():
-    
+    return render_template(
+        "7-states_list.html",
+        states_list=sum(
+            (f"<LI>{obj}</LI>"
+             for obj in storage.all().values()
+            ),
+            start=""
+        )
+    )
+
 
 if __name__ == "__main__":
     app.run("0.0.0.0", 5000)
