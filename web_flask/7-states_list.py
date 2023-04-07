@@ -44,7 +44,10 @@ def states_list_page():
     """
     return render_template(
         "7-states_list.html",
-        states=storage.all().values()
+        states=sorted(
+            storage.all().values(),
+            key=lambda state: state.name
+        )
     )
 
 
