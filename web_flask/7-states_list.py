@@ -6,12 +6,20 @@ URLs and their CONTENTS:
 from 'storage', by their id and name,
 sorted by their name.
 
+(For more info on how the cities and states
+are connected, look at
+models/state.py,
+models.citiy.py
+and models/engine)
+
 When this script is the main script,
 the website is ran and hosted in
 "0.0.0.0" in port 5000.
 """
 from flask import Flask, render_template
 from models import storage
+from models.state import State
+
 
 app = Flask(__name__)
 
@@ -35,10 +43,7 @@ def states_list_page():
     """
     return render_template(
         "7-states_list.html",
-        states=sorted(
-            storage.all().values(),
-            key=lambda state: state.name
-        )
+        states=storage.all(State).values()
     )
 
 
