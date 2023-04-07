@@ -41,6 +41,10 @@ def reload_states_list(exception):
 @app.route("/cities_by_states", strict_slashes=False)
 def cities_by_states():
     return render_template(
-        "8-cities_by_state.html",
+        "8-cities_by_states.html",
         states=storage.all(State).values()
     )
+
+
+if __name__ == "__main__":
+    app.run("0.0.0.0", 5000)
