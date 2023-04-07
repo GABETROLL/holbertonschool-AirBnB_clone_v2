@@ -37,14 +37,15 @@ def states_list():
 
 @app.route("/states_list", strict_slashes=False)
 def states_list():
+    """
+    Returns HTML page
+    "templates/7-states_list.html"
+    with a UL of states in 'storage'
+    listed by their id and their name.
+    """
     return render_template(
         "7-states_list.html",
-        states_list=sum(
-            (f"<LI>{obj.id}: <B>{obj.name}</B></LI>"
-             for obj in storage.all().values()
-            ),
-            start=""
-        )
+        states_list=storage.all().values()
     )
 
 
