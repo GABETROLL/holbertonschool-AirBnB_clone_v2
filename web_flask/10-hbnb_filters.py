@@ -1,9 +1,12 @@
 #!/usr/bin/python3
 """
-This is it! The final challenge and therefore
-final product!!!
-All of our work has been leading up to this!!!
-:D :D :D :D {:D
+[ /hbnb_filters ]: Has a search filter for State's
+and Amenitie's that are found in the 'storage' variable
+from 'models'.
+
+When this script is the main script,
+the website is ran and hosted in
+"0.0.0.0" in port 5000.
 """
 from flask import Flask, render_template
 from models import storage
