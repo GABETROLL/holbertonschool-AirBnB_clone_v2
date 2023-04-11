@@ -6,7 +6,8 @@ URLs and their CONTENTS:
 [ /hbnb ]: "HBNB" without any tags sorrounding it
 [ /c/<text> ]: f"C {text}" without any tags sorrounding it
 [ /python/<text> ]: f"Python {text} without any tags sorrounding it.
-    It also gets rid of all the underscores in 'text' and replaces them with spaces.
+    It also gets rid of all the underscores in 'text'
+    and replaces them with spaces.
     If there's no "<text>" nor "/<text>", the default 'text' is:
     "is_cool"
 
